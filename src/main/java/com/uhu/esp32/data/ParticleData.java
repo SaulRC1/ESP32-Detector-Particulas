@@ -7,6 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import java.sql.Timestamp;
+import java.util.Objects;
 
 /**
  *
@@ -30,12 +31,17 @@ public class ParticleData
     private Integer pm2_5;
     
     @Column(name = "latitude")
-    private Float latitude;
+    private String latitude;
     
     @Column(name = "longitude")
-    private Float longitude;
+    private String longitude;
+    
+    public ParticleData()
+    {
+        
+    }
 
-    public ParticleData(long id, Timestamp measurementTimestamp, Integer pm10, Integer pm2_5, Float latitude, Float longitude)
+    public ParticleData(long id, Timestamp measurementTimestamp, Integer pm10, Integer pm2_5, String latitude, String longitude)
     {
         this.id = id;
         this.measurementTimestamp = measurementTimestamp;
@@ -85,23 +91,71 @@ public class ParticleData
         this.pm2_5 = pm2_5;
     }
 
-    public Float getLatitude()
+    public String getLatitude()
     {
         return latitude;
     }
 
-    public void setLatitude(Float latitude)
+    public void setLatitude(String latitude)
     {
         this.latitude = latitude;
     }
 
-    public Float getLongitude()
+    public String getLongitude()
     {
         return longitude;
     }
 
-    public void setLongitude(Float longitude)
+    public void setLongitude(String longitude)
     {
         this.longitude = longitude;
     }
+
+    @Override
+    public int hashCode()
+    {
+        int hash = 5;
+        hash = 79 * hash + (int) (this.id ^ (this.id >>> 32));
+        hash = 79 * hash + Objects.hashCode(this.measurementTimestamp);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj)
+    {
+        if (this == obj)
+        {
+            return true;
+        }
+        if (obj == null)
+        {
+            return false;
+        }
+        if (getClass() != obj.getClass())
+        {
+            return false;
+        }
+        final ParticleData other = (ParticleData) obj;
+        if (this.id != other.id)
+        {
+            return false;
+        }
+        return Objects.equals(this.measurementTimestamp, other.measurementTimestamp);
+    }
+
+    @Override
+    public String toString()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append("ParticleData{");
+        sb.append("id=").append(id);
+        sb.append(", measurementTimestamp=").append(measurementTimestamp);
+        sb.append(", pm10=").append(pm10);
+        sb.append(", pm2_5=").append(pm2_5);
+        sb.append(", latitude=").append(latitude);
+        sb.append(", longitude=").append(longitude);
+        sb.append('}');
+        return sb.toString();
+    }
+    
 }

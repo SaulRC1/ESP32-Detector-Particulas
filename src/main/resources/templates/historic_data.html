@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8"/>
-    <title>ESP32 Particulas</title>
+    <title>ESP32 Histórico de Datos</title>
     <link rel="icon" th:href="@{/images/esp32_logo.png}" type="image/png"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,17 +15,6 @@
     <div class="main-div">
         <div th:insert="~{components/navigation_bar :: navigation_bar}"></div>
         <div class="app-viewport">
-            <div class="welcome-content-div">
-                <p>¡Bienvenido!</p>
-                <p>
-                    Aquí podras consultar los datos de lecturas de partículas realizado con la placa
-                    Heltec ESP32 LoRa V2.
-                </p>
-                <img class="esp32-image" th:src="@{/images/esp32_offline.png}" alt="Heltec ESP32 offline image"/>
-                <p>
-                    Estado del dispositivo: <span th:style="'color: ' + ${esp32_status_color}" th:text="${esp32_status}"></span>
-                </p>
-            </div>
             <footer>
                 <p class="footer-text">&copy; 2025 - Juan Alberto Domínguez Vázquez | Saúl Rodríguez Naranjo
             </footer>

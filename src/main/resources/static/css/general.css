@@ -15,15 +15,61 @@ body
     height: 100%;
 }
 
-.welcome-content-div
+.app-viewport
 {
     display: flex;
     flex-direction: column;
     height: 100%;
     width: calc(100% - 200px);
-    background-color: grey;
     font-family: "Oxanium", serif;
     font-optical-sizing: auto;
     font-weight: normal;
     font-style: normal;
+}
+
+.welcome-content-div
+{
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 30px);
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+footer
+{
+    display: flex;
+    align-items: center;
+    width: calc(100% - 2px);
+    height: 30px;
+    border-left: 2px solid white;
+    background-color: #048484;
+}
+
+.footer-text
+{
+    margin-left: 10px;
+    color: white;
+}
+
+.esp32-image
+{
+    width: 40%;
+    height: auto;
+}
+
+.section-title
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #048484;
+    border-left: 2px solid white;
+    width: calc(100% - 2px);
+    height: 100px;
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
 }

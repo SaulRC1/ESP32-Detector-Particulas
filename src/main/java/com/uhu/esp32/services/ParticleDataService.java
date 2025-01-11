@@ -28,4 +28,10 @@ public class ParticleDataService
     {
         this.particleDataRepository.save(particleData);
     }
+    
+    @Transactional(readOnly = false)
+    public List<ParticleData> findMostRecentData()
+    {
+        return this.particleDataRepository.findTop50ByOrderByMeasurementTimestampDesc();
+    }
 }
