@@ -1,6 +1,8 @@
 package com.uhu.esp32.controller;
 
+import com.uhu.esp32.data.ESP32ConnectionStatus;
 import com.uhu.esp32.data.ParticleData;
+import com.uhu.esp32.services.ESP32ConnectionStatusService;
 import com.uhu.esp32.services.ParticleDataService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,9 @@ public class ESP32DataReceiverController
 {
     @Autowired
     private ParticleDataService particleDataService;
+    
+    @Autowired
+    private ESP32ConnectionStatusService esp32ConnectionStatusService;
     
     @PostMapping("/save-particle-data")
     public String saveParticleData(@RequestBody ParticleData particleData)
@@ -74,5 +79,12 @@ public class ESP32DataReceiverController
         Pageable pageable = PageRequest.of(0, 30, Sort.by("measurementTimestamp").descending());
         
         return particleDataService.findNumberOfPagesForPaginatedData(pageable);
+    }
+    
+    @PostMapping("/set-esp32-status")
+    public String setEsp32Status(@RequestBody ESP32ConnectionStatus esp32ConnectionStatus)
+    {
+        this.esp32ConnectionStatusService.setESP32ConnectionStatus(esp32ConnectionStatus.getStatus());
+        return "ESP32 status has been set to '" + esp32ConnectionStatus.getStatus() + "'";
     }
 }

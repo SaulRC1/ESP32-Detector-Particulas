@@ -21,7 +21,8 @@
                     Aquí podras consultar los datos de lecturas de partículas realizado con la placa
                     Heltec ESP32 LoRa V2.
                 </p>
-                <img class="esp32-image" th:src="@{/images/esp32_offline.png}" alt="Heltec ESP32 offline image"/>
+                <img th:if="${status == 'DISCONNECTED'}" class="esp32-image" th:src="@{/images/esp32_offline.png}" alt="Heltec ESP32 offline image"/>
+                <img th:if="${status == 'CONNECTED'}" class="esp32-image" th:src="@{/images/esp32_online.png}" alt="Heltec ESP32 online image"/>
                 <p>
                     Estado del dispositivo: <span th:style="'color: ' + ${esp32_status_color}" th:text="${esp32_status}"></span>
                 </p>
