@@ -10,16 +10,23 @@
     <link rel="stylesheet" th:href="@{/css/general.css}"/>
     <link rel="stylesheet" th:href="@{/css/components/navigation_bar.css}"/>
     <link rel="stylesheet" th:href="@{/css/components/buttons.css}"/>
+    <link rel="stylesheet" th:href="@{/css/components/particle_data_table.css}"/>
 </head>
 <body>
     <div class="main-div">
         <div th:insert="~{components/navigation_bar :: navigation_bar}"></div>
         <div class="app-viewport">
+            <div class="section-title">
+                <p>HISTÓRICO DE DATOS</p>
+            </div>
+            <div class="particle_data_table_viewport" th:insert="~{components/particle_data_table :: particle_data_paginated_table}"></div>
             <footer>
                 <p class="footer-text">&copy; 2025 - Juan Alberto Domínguez Vázquez | Saúl Rodríguez Naranjo
             </footer>
         </div>
     </div>
+    
+    <script th:src="@{/js/retrieveHistoricParticleData.js}"></script>
 </body>
 </html>
 

@@ -28,7 +28,7 @@ public class ParticleData
     private Integer pm10;
     
     @Column(name = "PM2_5")
-    private Integer pm2_5;
+    private Integer pm25;
     
     @Column(name = "latitude")
     private String latitude;
@@ -41,12 +41,12 @@ public class ParticleData
         
     }
 
-    public ParticleData(long id, Timestamp measurementTimestamp, Integer pm10, Integer pm2_5, String latitude, String longitude)
+    public ParticleData(long id, Timestamp measurementTimestamp, Integer pm10, Integer pm25, String latitude, String longitude)
     {
         this.id = id;
         this.measurementTimestamp = measurementTimestamp;
         this.pm10 = pm10;
-        this.pm2_5 = pm2_5;
+        this.pm25 = pm25;
         this.latitude = latitude;
         this.longitude = longitude;
     }
@@ -81,14 +81,14 @@ public class ParticleData
         this.pm10 = pm10;
     }
 
-    public Integer getPm2_5()
+    public Integer getPm25()
     {
-        return pm2_5;
+        return pm25;
     }
 
-    public void setPm2_5(Integer pm2_5)
+    public void setPm25(Integer pm25)
     {
-        this.pm2_5 = pm2_5;
+        this.pm25 = pm25;
     }
 
     public String getLatitude()
@@ -151,7 +151,7 @@ public class ParticleData
         sb.append("id=").append(id);
         sb.append(", measurementTimestamp=").append(measurementTimestamp);
         sb.append(", pm10=").append(pm10);
-        sb.append(", pm2_5=").append(pm2_5);
+        sb.append(", pm2_5=").append(pm25);
         sb.append(", latitude=").append(latitude);
         sb.append(", longitude=").append(longitude);
         sb.append('}');

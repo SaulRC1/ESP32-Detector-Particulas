@@ -6,7 +6,6 @@
     </head>
     <body>
 
-        <!-- Fragmento de cabecera -->
         <div class="particle_data_table_div" th:fragment="particle_data_table">
             <table id="particle_data_table" class="particle_data_table">
                 <thead>
@@ -23,6 +22,50 @@
                     
                 </tbody>
             </table>
+        </div>
+        
+        <div class="particle_data_paginated_table_component_viewport" th:fragment="particle_data_paginated_table">
+            <div class="particle_data_paginated_table_div">
+                <table id="particle_data_table" class="particle_data_table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Fecha y Hora</th>
+                            <th>PM10 (&micro;g/m<sup>3</sup>)</th>
+                            <th>PM2.5 (&micro;g/m<sup>3</sup>)</th>
+                            <th>Latitud</th>
+                            <th>Longitud</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="particle_data_table_button_panel">
+                <button onClick="moveToFirstPage()" class="particle_data_paginated_table_button esp32_button_with_image">
+                    <img th:src="@{/images/first_page_arrow.png}" alt="Primera página"/>
+                </button>
+                <button onClick="moveToBackwardsPage()" class="particle_data_paginated_table_button esp32_button_with_image">
+                    <img th:src="@{/images/backwards_arrow.png}" alt="Retroceder una página"/>
+                </button>
+                <p id="paginated_table_page_number_p">1 / 12</p>
+                <button onClick="moveToForwardPage()" class="particle_data_paginated_table_button esp32_button_with_image">
+                    <img th:src="@{/images/forward_arrow.png}" alt="Avanzar una página"/>
+                </button>
+                <button onClick="moveToLastPage()" class="particle_data_paginated_table_button esp32_button_with_image">
+                    <img th:src="@{/images/last_page_arrow.png}" alt="Última página"/>
+                </button>
+                
+                <select class="particle_data_paginated_table_combobox" id="particle_data_paginated_table_combobox">
+                    <option value="date_descending">Fecha (más reciente a menos reciente)</option>
+                    <option value="date_ascending">Fecha (menos reciente a más reciente)</option>
+                    <option value="pm10_ascending">PM10 Ascendente</option>
+                    <option value="pm10_descending">PM10 Descendente</option>
+                    <option value="pm2_5_ascending">PM2.5 Ascendente</option>
+                    <option value="pm2_5_descending">PM2.5 Descendente</option>
+                </select>
+            </div>
         </div>
 
     </body>

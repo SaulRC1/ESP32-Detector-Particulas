@@ -15,7 +15,6 @@
 .particle_data_table 
 {
     width: 100%;
-    height: 100%;
     border-collapse: collapse;
 }
 
@@ -44,3 +43,83 @@
 {
     background-color: lightgray;
 }
+
+.particle_data_paginated_table_div
+{
+    width: 100%;
+    height: calc(100% - 75px);
+    scroll-snap-type: y mandatory;
+    overflow: auto;
+}
+
+.particle_data_table_button_panel
+{
+    width: calc(100% - 2px);
+    height: 73px;
+    max-height: 75px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #048484;
+    border-bottom: 2px solid white;
+    border-left: 2px solid white;
+}
+
+.particle_data_paginated_table_component_viewport
+{
+    width: 100%;
+    height: 100%;
+}
+
+.particle_data_paginated_table_button
+{
+    border: none;
+    border-right: 2px solid white;
+    height: 100%;
+    width: 200px;
+}
+
+#paginated_table_page_number_p
+{
+    height: 100%;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #048484;
+    color: white;
+    font-size: 24px;
+    border-right: 2px solid white;
+}
+
+.particle_data_paginated_table_combobox
+{
+    border: none;
+    border-right: 2px solid white;
+    height: 100%;
+    width: 300px;
+    background-color: #048484;
+    font-family: "Oxanium", serif;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.particle_data_paginated_table_combobox:hover
+{
+    background-color: #245c70;
+}
+
+.particle_data_paginated_table_combobox option
+{
+    font-family: "Oxanium", serif;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+    color: white;
+    font-size: 14px;
+}
+

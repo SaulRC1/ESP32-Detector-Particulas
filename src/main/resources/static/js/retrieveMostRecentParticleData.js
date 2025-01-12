@@ -52,7 +52,7 @@ function createTableRow(data)
     pm10.textContent = data.pm10;
     
     pm2_5 = document.createElement("td");
-    pm2_5.textContent = data.pm2_5;
+    pm2_5.textContent = data.pm25;
     
     latitude = document.createElement("td");
     latitude.textContent = data.latitude;

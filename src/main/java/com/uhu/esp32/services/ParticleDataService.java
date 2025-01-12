@@ -4,6 +4,7 @@ import com.uhu.esp32.data.ParticleData;
 import com.uhu.esp32.repositories.ParticleDataRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,5 +34,17 @@ public class ParticleDataService
     public List<ParticleData> findMostRecentData()
     {
         return this.particleDataRepository.findTop50ByOrderByMeasurementTimestampDesc();
+    }
+    
+    @Transactional(readOnly = false)
+    public List<ParticleData> findPaginatedData(Pageable pageable)
+    {
+        return this.particleDataRepository.findAll(pageable).getContent();
+    }
+    
+    @Transactional(readOnly = false)
+    public int findNumberOfPagesForPaginatedData(Pageable pageable)
+    {
+        return this.particleDataRepository.findAll(pageable).getTotalPages();
     }
 }
