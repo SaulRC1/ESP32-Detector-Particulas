@@ -2,9 +2,8 @@
 {
     width: 100%;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    scroll-snap-type: y mandatory;
+    overflow: auto;
 }
 
 .particle_data_table_viewport
@@ -15,14 +14,33 @@
 
 .particle_data_table 
 {
-    width: 90%;
+    width: 100%;
+    height: 100%;
     border-collapse: collapse;
 }
 
 .particle_data_table th 
 {
+    position: sticky;
+    top: 0;
     background-color: #048484;
     border: 2px solid white;
     border-collapse: collapse;
     color: white;
+}
+
+.particle_data_table tr
+{
+    scroll-snap-align: start;
+}
+
+.particle_data_table td
+{
+    border: 2px solid white;
+    border-collapse: collapse;
+}
+
+.particle_data_table_odd_row
+{
+    background-color: lightgray;
 }

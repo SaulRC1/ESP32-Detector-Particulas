@@ -30,12 +30,12 @@ public class ESP32ParticleVisualizationController
     @GetMapping("/datos-recientes")
     public String getESP32RecentDataPage(Model model)
     {
-        List<ParticleData> mostRecentData = particleDataService.findMostRecentData();
+        /*List<ParticleData> mostRecentData = particleDataService.findMostRecentData();
         
         for (ParticleData particleData : mostRecentData)
         {
             System.out.println(particleData);
-        }
+        }*/
         
         return "recent_data";
     }

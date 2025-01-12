@@ -2,6 +2,7 @@ package com.uhu.esp32.controller;
 
 import com.uhu.esp32.data.ParticleData;
 import com.uhu.esp32.services.ParticleDataService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,9 +26,9 @@ public class ESP32DataReceiverController
         return "Particle data saved";
     }
     
-    @GetMapping("/get-particle-data")
-    public String getParticleData()
+    @GetMapping("/get-recent-particle-data")
+    public List<ParticleData> getMostRecentParticleData()
     {
-        return "Particle data get";
+        return particleDataService.findMostRecentData();
     }
 }
