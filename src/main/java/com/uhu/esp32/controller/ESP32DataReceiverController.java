@@ -100,7 +100,7 @@ public class ESP32DataReceiverController
     public List<?> getESP32GraphDataDay(@RequestParam("start_date")
             @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate, @RequestParam("end_date")
             @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate, @RequestParam("metric") String metric,
-            @RequestParam("field") String field)
+            @RequestParam("field") String field, @RequestParam("latitude") String latitude, @RequestParam("longitude") String longitude)
     {
         GraphDataMetric dataMetric = GraphDataMetric.fromLiteral(metric);
 
@@ -111,16 +111,46 @@ public class ESP32DataReceiverController
                 switch (dataMetric)
                 {
                     case AVERAGE:
-                        List<ParticleGraphDataByHourFromDay<Float>> pm10AverageList 
-                                = this.particleDataService.findPM10AverageByHourFromDay(startDate.format(DateTimeFormatter.ISO_DATE));
+                        List<ParticleGraphDataByHourFromDay<Float>> pm10AverageList;
+                        
+                        if(latitude.equals("none") && longitude.equals("none"))
+                        {
+                            pm10AverageList = this.particleDataService.findPM10AverageByHourFromDay(startDate.format(DateTimeFormatter.ISO_DATE));
+                        }
+                        else
+                        {
+                            pm10AverageList = this.particleDataService.findPM10AverageByHourFromDay(
+                                    startDate.format(DateTimeFormatter.ISO_DATE), latitude, longitude);
+                        }
+                        
                         return pm10AverageList;
                     case MAXIMUM:
-                        List<ParticleGraphDataByHourFromDay<Integer>> pm10MaximumList 
-                                = this.particleDataService.findPM10MaximumByHourFromDay(startDate.format(DateTimeFormatter.ISO_DATE));
+                        List<ParticleGraphDataByHourFromDay<Integer>> pm10MaximumList;
+                        
+                        if(latitude.equals("none") && longitude.equals("none"))
+                        {
+                            pm10MaximumList = this.particleDataService.findPM10MaximumByHourFromDay(startDate.format(DateTimeFormatter.ISO_DATE));
+                        }
+                        else
+                        {
+                            pm10MaximumList = this.particleDataService.findPM10MaximumByHourFromDay(
+                                    startDate.format(DateTimeFormatter.ISO_DATE), latitude, longitude);
+                        }
+                                
                         return pm10MaximumList;
                     case MINIMUM:
-                        List<ParticleGraphDataByHourFromDay<Integer>> pm10MinimumList 
-                                = this.particleDataService.findPM10MinimumByHourFromDay(startDate.format(DateTimeFormatter.ISO_DATE));
+                        List<ParticleGraphDataByHourFromDay<Integer>> pm10MinimumList;
+                        
+                        if(latitude.equals("none") && longitude.equals("none"))
+                        {
+                            pm10MinimumList = this.particleDataService.findPM10MinimumByHourFromDay(startDate.format(DateTimeFormatter.ISO_DATE));
+                        }
+                        else
+                        {
+                            pm10MinimumList = this.particleDataService.findPM10MinimumByHourFromDay(
+                                    startDate.format(DateTimeFormatter.ISO_DATE), latitude, longitude);
+                        }
+                                
                         return pm10MinimumList;
                     default:
                         return null;
@@ -131,16 +161,46 @@ public class ESP32DataReceiverController
                 switch (dataMetric)
                 {
                     case AVERAGE:
-                        List<ParticleGraphDataByHourFromDay<Float>> pm25AverageList 
-                                = this.particleDataService.findPM25AverageByHourFromDay(startDate.format(DateTimeFormatter.ISO_DATE));
+                        List<ParticleGraphDataByHourFromDay<Float>> pm25AverageList;
+                        
+                        if(latitude.equals("none") && longitude.equals("none"))
+                        {
+                            pm25AverageList = this.particleDataService.findPM25AverageByHourFromDay(startDate.format(DateTimeFormatter.ISO_DATE));
+                        }
+                        else
+                        {
+                            pm25AverageList = this.particleDataService.findPM25AverageByHourFromDay(
+                                    startDate.format(DateTimeFormatter.ISO_DATE), latitude, longitude);
+                        }
+                                
                         return pm25AverageList;
                     case MAXIMUM:
-                        List<ParticleGraphDataByHourFromDay<Integer>> pm25MaximumList 
-                                = this.particleDataService.findPM25MaximumByHourFromDay(startDate.format(DateTimeFormatter.ISO_DATE));
+                        List<ParticleGraphDataByHourFromDay<Integer>> pm25MaximumList;
+                        
+                        if(latitude.equals("none") && longitude.equals("none"))
+                        {
+                            pm25MaximumList = this.particleDataService.findPM25MaximumByHourFromDay(startDate.format(DateTimeFormatter.ISO_DATE));
+                        }
+                        else
+                        {
+                            pm25MaximumList = this.particleDataService.findPM25MaximumByHourFromDay(
+                                    startDate.format(DateTimeFormatter.ISO_DATE), latitude, longitude);
+                        }
+                                
                         return pm25MaximumList;
                     case MINIMUM:
-                        List<ParticleGraphDataByHourFromDay<Integer>> pm25MinimumList 
-                                = this.particleDataService.findPM25MinimumByHourFromDay(startDate.format(DateTimeFormatter.ISO_DATE));
+                        List<ParticleGraphDataByHourFromDay<Integer>> pm25MinimumList;
+                        
+                        if(latitude.equals("none") && longitude.equals("none"))
+                        {
+                            pm25MinimumList = this.particleDataService.findPM25MinimumByHourFromDay(startDate.format(DateTimeFormatter.ISO_DATE));
+                        }
+                        else
+                        {
+                            pm25MinimumList = this.particleDataService.findPM25MinimumByHourFromDay(
+                                    startDate.format(DateTimeFormatter.ISO_DATE), latitude, longitude);
+                        }
+    
                         return pm25MinimumList;
                     default:
                         return null;
@@ -154,16 +214,43 @@ public class ESP32DataReceiverController
                 switch (dataMetric)
                 {
                     case AVERAGE:
-                        List<ParticleGraphDataByDate<Float>> pm10AverageList 
-                                = this.particleDataService.findPM10AverageByDateRange(startDate, endDate);
+                        List<ParticleGraphDataByDate<Float>> pm10AverageList;
+                        
+                        if(latitude.equals("none") && longitude.equals("none"))
+                        {
+                            pm10AverageList = this.particleDataService.findPM10AverageByDateRange(startDate, endDate);
+                        }
+                        else
+                        {
+                            pm10AverageList = this.particleDataService.findPM10AverageByDateRange(startDate, endDate, latitude, longitude);
+                        }
+                                
                         return pm10AverageList;
                     case MAXIMUM:
-                        List<ParticleGraphDataByDate<Integer>> pm10MaximumList 
-                                = this.particleDataService.findPM10MaximumByDateRange(startDate, endDate);
+                        List<ParticleGraphDataByDate<Integer>> pm10MaximumList;
+                        
+                        if(latitude.equals("none") && longitude.equals("none"))
+                        {
+                            pm10MaximumList = this.particleDataService.findPM10MaximumByDateRange(startDate, endDate);
+                        }
+                        else
+                        {
+                            pm10MaximumList = this.particleDataService.findPM10MaximumByDateRange(startDate, endDate, latitude, longitude);
+                        }
+
                         return pm10MaximumList;
                     case MINIMUM:
-                        List<ParticleGraphDataByDate<Integer>> pm10MinimumList 
-                                = this.particleDataService.findPM10MinimumByDateRange(startDate, endDate);
+                        List<ParticleGraphDataByDate<Integer>> pm10MinimumList;
+                        
+                        if(latitude.equals("none") && longitude.equals("none"))
+                        {
+                            pm10MinimumList = this.particleDataService.findPM10MinimumByDateRange(startDate, endDate);
+                        }
+                        else
+                        {
+                            pm10MinimumList = this.particleDataService.findPM10MinimumByDateRange(startDate, endDate, latitude, longitude);
+                        }
+                        
                         return pm10MinimumList;
                     default:
                         return null;
@@ -174,16 +261,43 @@ public class ESP32DataReceiverController
                 switch (dataMetric)
                 {
                     case AVERAGE:
-                        List<ParticleGraphDataByDate<Float>> pm25AverageList 
-                                = this.particleDataService.findPM25AverageByDateRange(startDate, endDate);
+                        List<ParticleGraphDataByDate<Float>> pm25AverageList;
+                        
+                        if(latitude.equals("none") && longitude.equals("none"))
+                        {
+                            pm25AverageList = this.particleDataService.findPM25AverageByDateRange(startDate, endDate);
+                        }
+                        else
+                        {
+                            pm25AverageList = this.particleDataService.findPM25AverageByDateRange(startDate, endDate, latitude, longitude);
+                        }
+                                
                         return pm25AverageList;
                     case MAXIMUM:
-                        List<ParticleGraphDataByDate<Integer>> pm25MaximumList 
-                                = this.particleDataService.findPM25MaximumByDateRange(startDate, endDate);
+                        List<ParticleGraphDataByDate<Integer>> pm25MaximumList;
+                        
+                        if(latitude.equals("none") && longitude.equals("none"))
+                        {
+                            pm25MaximumList = this.particleDataService.findPM25MaximumByDateRange(startDate, endDate); 
+                        }
+                        else
+                        {
+                            pm25MaximumList = this.particleDataService.findPM25MaximumByDateRange(startDate, endDate, latitude, longitude);
+                        }
+                               
                         return pm25MaximumList;
                     case MINIMUM:
-                        List<ParticleGraphDataByDate<Integer>> pm25MinimumList 
-                                = this.particleDataService.findPM25MinimumByDateRange(startDate, endDate);
+                        List<ParticleGraphDataByDate<Integer>> pm25MinimumList;
+                        
+                        if(latitude.equals("none") && longitude.equals("none"))
+                        {
+                            pm25MinimumList = this.particleDataService.findPM25MinimumByDateRange(startDate, endDate);
+                        }
+                        else
+                        {
+                            pm25MinimumList = this.particleDataService.findPM25MinimumByDateRange(startDate, endDate, latitude, longitude);
+                        }
+                                
                         return pm25MinimumList;
                     default:
                         return null;

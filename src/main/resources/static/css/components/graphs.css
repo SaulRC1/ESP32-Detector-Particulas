@@ -19,6 +19,7 @@
     border-left: 2px solid white;
     border-top: 2px solid white;
     border-bottom: 2px solid white;
+    overflow: auto;
 }
 
 #data_graph_viewport
@@ -46,6 +47,17 @@
 .filter-field
 {
     margin-bottom: 10px;
+}
+
+.filter-text-input
+{
+    width: 90%;
+    height: 35px;
+    font-family: "Oxanium", serif;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 14px;
 }
 
 .filter-combobox

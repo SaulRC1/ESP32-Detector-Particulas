@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", function ()
     console.log("Today is: " + todayISODate);
     
     fetchURL = 'get-esp32-graph-data?start_date=' + todayISODate + '&end_date='
-    + todayISODate + '&metric=average&field=pm10';
+    + todayISODate + '&metric=average&field=pm10&latitude=none&longitude=none';
     fetch(fetchURL)
         .then(response => {
             if (!response.ok) {
@@ -159,6 +159,8 @@ function applyFilter()
     let endDateInput = document.getElementById("end-date-input");
     let metricCombobox = document.getElementById("metric-combobox");
     let fieldCombobox = document.getElementById("field-combobox");
+    let latitudeInput = document.getElementById("latitude-input");
+    let longitudeInput = document.getElementById("longitude-input");
     
     console.log("Start date: " + startDateInput.value);
     console.log("End date: " + endDateInput.value);
@@ -169,8 +171,12 @@ function applyFilter()
     const selectedFieldOption = fieldCombobox.options[fieldCombobox.selectedIndex];
     console.log("Selected field: " + selectedFieldOption.value);
     
+    console.log("Latitude: " + latitudeInput.value);
+    console.log("Longitude: " + longitudeInput.value);
+    
     fetchURL = 'get-esp32-graph-data?start_date=' + startDateInput.value + '&end_date='
-    + endDateInput.value + '&metric=' + selectedMetricOption.value + '&field=' + selectedFieldOption.value;
+    + endDateInput.value + '&metric=' + selectedMetricOption.value + '&field=' + selectedFieldOption.value
+    + '&latitude=' + latitudeInput.value + '&longitude=' + longitudeInput.value;
     
     const startDate = new Date(startDateInput.value);
     const endDate = new Date(endDateInput.value);
