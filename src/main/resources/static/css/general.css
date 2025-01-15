@@ -73,3 +73,10 @@ footer
     font-weight: bold;
     color: white;
 }
+
+.subsection-title-p
+{
+    font-weight: bold;
+    font-size: 32px;
+    color: white;
+}

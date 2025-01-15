@@ -1,0 +1,80 @@
+#data_graph_main_div
+{
+    width: 100%;
+    height: calc(100% - 30px - 100px);
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#data_graph_filter_menu
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: calc(100% - 4px);
+    width: 250px;
+    background-color: #048484;
+    border-left: 2px solid white;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+}
+
+#data_graph_viewport
+{
+    width: calc(100% - 252px);
+    height: 100%;
+}
+
+#data_graph_viewport text
+{
+    font-size: 16px;
+    font-family: "Oxanium", serif;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+}
+
+.filter-field-label
+{
+    color: white;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.filter-field
+{
+    margin-bottom: 10px;
+}
+
+.filter-combobox
+{
+    border: 2px solid white;
+    height: 35px;
+    width: 90%;
+    background-color: #048484;
+    font-family: "Oxanium", serif;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.filter-combobox:hover
+{
+    background-color: #245c70;
+}
+
+.filter-button
+{
+    width: 100px;
+    height: 30px;
+}
+
+.filter-date-input
+{
+    height: 30px;
+}

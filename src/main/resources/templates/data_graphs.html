@@ -10,16 +10,50 @@
     <link rel="stylesheet" th:href="@{/css/general.css}"/>
     <link rel="stylesheet" th:href="@{/css/components/navigation_bar.css}"/>
     <link rel="stylesheet" th:href="@{/css/components/buttons.css}"/>
+    <link rel="stylesheet" th:href="@{/css/components/graphs.css}"/>
 </head>
 <body>
     <div class="main-div">
         <div th:insert="~{components/navigation_bar :: navigation_bar}"></div>
         <div class="app-viewport">
+            <div class="section-title">
+                <p>GRÁFICOS DE DATOS</p>
+            </div>
+            <div id="data_graph_main_div">
+                <div id="data_graph_filter_menu">
+                    <p class="subsection-title-p">Filtros</p>
+                    
+                    <label for="start-date-input" class="filter-field-label">Fecha de inicio</label>
+                    <input id="start-date-input" class="filter-field filter-date-input" type="date"/>
+                    
+                    <label for="end-date-input" class="filter-field-label">Fecha de fin</label>
+                    <input id="end-date-input" class="filter-field filter-date-input" type="date"/>
+                    
+                    <label for="metric-combobox" class="filter-field-label">Métrica</label>
+                    <select id="metric-combobox" class="filter-field filter-combobox">
+                        <option value="average">Media</option>
+                        <option value="maximum">Valor máximo</option>
+                        <option value="minimum">Valor mínimo</option>
+                    </select>
+                    
+                    <label for="field-combobox" class="filter-field-label">Campo</label>
+                    <select id="field-combobox" class="filter-field filter-combobox">
+                        <option value="pm10">PM10</option>
+                        <option value="pm25">PM2.5</option>
+                    </select>
+                    
+                    <button onClick="applyFilter()" class="esp32_button filter-button">Aplicar</button>
+                </div>
+                <div id="data_graph_viewport"></div>
+            </div>
             <footer>
                 <p class="footer-text">&copy; 2025 - Juan Alberto Domínguez Vázquez | Saúl Rodríguez Naranjo
             </footer>
         </div>
     </div>
+    
+    <script th:src="@{/js/d3.v7.min.js}"></script>
+    <script th:src="@{/js/graphs.js}"></script>
 </body>
 </html>
 

@@ -23,7 +23,24 @@
 
 .esp32_button
 {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    font-family: "Oxanium", serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+    border: 2px white solid;
+    background-color: #048484;
+    cursor: pointer;
+}
 
+.esp32_button:hover
+{
+    background-color: #245c70;
 }
 
 .esp32_button_with_image
@@ -39,7 +56,7 @@
 .esp32_button_with_image img
 {
     width: auto;
-    height: 100%;
+    height: 80%;
     object-fit: contain;
 }
 
